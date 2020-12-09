@@ -10,6 +10,10 @@ function writePassword() {
 }
 
 function generatePassword(){
+  var passwordLength = prompt("How long do you want your password to be?");
+  if (passwordLength < 8 || passwordLength > 128) {
+    return null;
+  }
 
 }
 
