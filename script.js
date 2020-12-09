@@ -9,12 +9,14 @@ function writePassword() {
 
 }
 
-function generatePassword(){
+function generatePassword() {
+  var characterSheet = "";
+
   var passwordLength = prompt("How long do you want your password to be?");
   if (passwordLength < 8 || passwordLength > 128) {
     return null;
   }
-  
+
   var allowLowercase = confirm("Do you want lowercase?");
   var allowUppercase = confirm("Do you want uppercase?");
   var allowNumeric = confirm("Do you want numeric characters?");
@@ -22,6 +24,12 @@ function generatePassword(){
   if (!allowLowercase && !allowUppercase && !allowNumeric && !allowSpecial) {
     return null;
   }
+  characterSheet += allowLowercase ? "abcdefghijklmnopqrstuvwxyz" : ""; 
+  characterSheet += allowUppercase ? "ABCDEFGHIJKLMNOPQRSTUVWXYZ" : "";
+  characterSheet += allowNumeric ? "0123456789" : "";
+  characterSheet += allowSpecial ? " !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~\"" : "";
+
+  console.log(characterSheet);
 
   return password;
 }
