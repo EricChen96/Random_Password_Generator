@@ -14,7 +14,16 @@ function generatePassword(){
   if (passwordLength < 8 || passwordLength > 128) {
     return null;
   }
+  
+  var allowLowercase = confirm("Do you want lowercase?");
+  var allowUppercase = confirm("Do you want uppercase?");
+  var allowNumeric = confirm("Do you want numeric characters?");
+  var allowSpecial = confirm("Do you want special characters?");
+  if (!allowLowercase && !allowUppercase && !allowNumeric && !allowSpecial) {
+    return null;
+  }
 
+  return password;
 }
 
 // Add event listener to generate button
