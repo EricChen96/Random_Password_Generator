@@ -24,14 +24,17 @@ function generatePassword() {
   if (!allowLowercase && !allowUppercase && !allowNumeric && !allowSpecial) {
     return null;
   }
-  characterSheet += allowLowercase ? "abcdefghijklmnopqrstuvwxyz" : ""; 
+  characterSheet += allowLowercase ? "abcdefghijklmnopqrstuvwxyz" : "";
   characterSheet += allowUppercase ? "ABCDEFGHIJKLMNOPQRSTUVWXYZ" : "";
   characterSheet += allowNumeric ? "0123456789" : "";
   characterSheet += allowSpecial ? " !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~\"" : "";
 
   console.log(characterSheet);
-
-  return password;
+  var tempPassword = "";
+  for (var i = 0; i < passwordLength; i++) {
+    tempPassword += characterSheet[Math.floor(Math.random() * characterSheet.length)];
+  }
+  return tempPassword;
 }
 
 // Add event listener to generate button
