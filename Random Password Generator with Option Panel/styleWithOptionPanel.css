@@ -38,8 +38,21 @@ header {
   color: hsl(206, 17%, 28%);
   font-size: 18px;
   margin: 0 auto;
-  max-width: 800px; 
+  max-width: 85%; /**Original: 800px*/
   padding: 30px 40px;
+  /*************************/
+  min-width: 65%;
+  float: left;
+}
+
+.optionPanel {
+  
+  float: left;
+  padding-left: 10px;
+}
+
+#passwordLengthLabel {
+  font-size: 10px;
 }
 
 .card-header::after {
