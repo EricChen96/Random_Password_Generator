@@ -1,17 +1,53 @@
 # Random_Password_Generator
 
-GIVEN I need a new, secure password
-WHEN I click the button to generate a password
-THEN I am presented with a series of prompts for password criteria
-WHEN prompted for password criteria
-THEN I select which criteria to include in the password
-WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters
-WHEN prompted for character types to include in the password
-THEN I choose lowercase, uppercase, numeric, and/or special characters
-WHEN I answer each prompt
-THEN my input should be validated and at least one character type should be selected
-WHEN all prompts are answered
-THEN a password is generated that matches the selected criteria
-WHEN the password is generated
-THEN the password is either displayed in an alert or written to the page
+
+![Random Password Generator](./assets/Password_Generator_Screenshot.png)
+
+## Installation
+
+Go to Github and download
+
+## Description
+
+The following password generator would prompt the user for the length of their password, ask them for whether they want lowercase, uppercase, numeric or special characters, and then generate a password. 
+
+## Additions:
+
+1. If the user confirms they want a type of character, the generator would ensure that one character from that type is in the password. The function checkIfCharUsed(checkCharacterUsed, checkPassword, checkCharacterSheet) returns true if the password uses that character. It accepts a boolean first to see if user wanted that type of character to be used. Then accepts the password to check, and the characters to check for. 
+
+``` 
+function checkIfCharUsed(checkCharacterUsed, checkPassword, checkCharacterSheet) {
+  if (checkCharacterUsed) {
+    for (var i = 0; i < checkPassword.length; i++) {
+      for (var j = 0; j < checkCharacterSheet.length; j++) {
+        if (checkPassword[i] === checkCharacterSheet[j]) {
+          return true
+        }
+      }
+    }
+  }
+  else {
+    return true;
+  }
+  return false;
+}
+```
+
+This code block uses the checkIfCharUsed function to check the password and would loop to create a new password until the password contains a character type that the user selected
+
+```
+do {
+    tempPassword = "";
+    for (var i = 0; i < passwordLength; i++) {
+      tempPassword += characterSheet[Math.floor(Math.random() * characterSheet.length)];
+    }
+  } while (!checkIfCharUsed(allowLowercase, tempPassword, lowercaseSheet) || !checkIfCharUsed(allowUppercase, tempPassword, uppercaseSheet) || !checkIfCharUsed(allowNumeric, tempPassword, numericSheet) || !checkIfCharUsed(allowSpecial, tempPassword, specialSheet))
+```
+
+2. The other addition was an auto-copy to clipboard once the password was generated
+```
+  var copyText = document.querySelector("#password");
+  copyText.focus();
+  copyText.select();
+  document.execCommand('copy');
+```
