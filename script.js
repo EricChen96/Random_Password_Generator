@@ -15,10 +15,11 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
-  //Copy to clipboard
+  //Automatic copy to clipboard
   var copyText = document.querySelector("#password");
+  copyText.focus();
   copyText.select();
-  document.execCommand("copy");
+  document.execCommand('copy');
 }
 
 //generates password function
@@ -64,7 +65,6 @@ function checkIfCharUsed(checkCharacterUsed, checkPassword, checkCharacterSheet)
     for (var i = 0; i < checkPassword.length; i++) {
       for (var j = 0; j < checkCharacterSheet.length; j++) {
         if (checkPassword[i] === checkCharacterSheet[j]) {
-          console.log(checkCharacterSheet);
           return true
         }
       }
@@ -75,7 +75,6 @@ function checkIfCharUsed(checkCharacterUsed, checkPassword, checkCharacterSheet)
   }
   return false;
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
