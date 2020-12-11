@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 var lowercaseSheet = "abcdefghijklmnopqrstuvwxyz";
 var uppercaseSheet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numericSheet = "0123456789"
-var specialSheet = " !#$%&'()*+,-./:;<=>?@[\\]^_`{|}~\""
+var specialSheet = "!#$%&'()*+,-./:;<=>?@[\\]^_`{|}~\""
 
 // Write password to the #password input
 function writePassword() {
@@ -27,7 +27,7 @@ function generatePassword() {
   //asks user for how long they want their password to be but has to be >8 and <128
   var passwordLength = parseInt(prompt("How long do you want your password to be?"));
   if (passwordLength < 8 || passwordLength > 128) {
-    return null;
+    return "";
   }
 
   //Asks user for conditions they want in their password but one must be selected
@@ -36,7 +36,7 @@ function generatePassword() {
   var allowNumeric = confirm("Do you want numeric characters?");
   var allowSpecial = confirm("Do you want special characters?");
   if (!allowLowercase && !allowUppercase && !allowNumeric && !allowSpecial) {
-    return null;
+    return "";
   }
 
   //Adds the character sheet string according to what user selected previously

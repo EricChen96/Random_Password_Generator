@@ -3,6 +3,9 @@
 
 ![Random Password Generator](./assets/Password_Generator_Screenshot.png)
 
+[Link to site](https://ericchen96.github.io/Random_Password_Generator/) <br>
+[Link to Github repository](https://github.com/EricChen96/Random_Password_Generator)
+
 ## Installation
 
 Go to Github and download
